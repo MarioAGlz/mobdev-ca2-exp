@@ -3,8 +3,22 @@
 		<ion-buttons slot="start">
 			<ion-back-button defaulthref="/tabs/episodes"></ion-back-button>
 		</ion-buttons>
-		<ion-title>Episode Details</ion-title>
+		<ion-title>{{ episode?.title }}</ion-title>
 	</ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+
+<ion-content>
+	<ion-card *ngIf="episode">
+		<ion-card-content>
+            <p>Episode: {{ episode.episode }} </p>
+			<p>Season: {{ episode.season }} </p>
+            <p>Air date: {{ episode.air_date }} </p>
+            <p>Serie: " {{ episode.series }} " </p>
+		</ion-card-content>
+	</ion-card>
+    <ion-card *ngIf="episode">
+		<ion-card-content>
+            <p>Characters: </p> {{ episode.characters }}
+		</ion-card-content>
+	</ion-card>
 </ion-content>
