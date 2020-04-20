@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>deaths</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title> Deaths </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- 
+    code reference:
+    https://www.freecodecamp.org/news/how-to-build-your-first-ionic-4-app-with-api-calls-f6ea747dc17a/
+    ngModel: save what the user write in the varible searchTerm
+    ionChange: detect when the value in the variable change and call to the method
+-->
+<ion-content padding>
+
+    <ion-searchbar debounce="1000" [(ngModel)]="searchName" (ionChange)="searchChanged($event)">
+    </ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let death of (deaths | async)">
+        Number of deaths: {{ death.deathCount }}
+        </ion-item>
+    </ion-list>
 
 </ion-content>

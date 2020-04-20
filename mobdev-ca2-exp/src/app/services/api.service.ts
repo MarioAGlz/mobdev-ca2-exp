@@ -24,15 +24,21 @@ export class ApiService {
         return this.http.get(`https://www.breakingbadapi.com/api/characters/${id}`);
     }
 
-    getQuotes() {
-        return this.http.get('https://www.breakingbadapi.com/api/quotes');
+    /**
+    * Get data from the BreakingBad Api 
+    * @param {string} name Search Term
+    * code reference:  
+    * https://www.freecodecamp.org/news/how-to-build-your-first-ionic-4-app-with-api-calls-f6ea747dc17a/
+    */
+    getQuotes(name: string) {
+        return this.http.get(`https://www.breakingbadapi.com/api/quote?author=${encodeURI(name)}`);
     }
 
     getQuote(id) {
         return this.http.get(`https://www.breakingbadapi.com/api/quotes/${id}`);
     }
 
-    getDeaths() {
-        return this.http.get('https://www.breakingbadapi.com/api/deaths');
+    getDeaths(name: string) {
+        return this.http.get(`https://www.breakingbadapi.com/api/death-count?name=${encodeURI(name)}`);
     }
 }

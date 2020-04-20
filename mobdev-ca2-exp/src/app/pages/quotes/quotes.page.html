@@ -4,29 +4,19 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- 
+    code reference:
+    https://www.freecodecamp.org/news/how-to-build-your-first-ionic-4-app-with-api-calls-f6ea747dc17a/
+    ngModel: save what the user write in the varible searchTerm
+    ionChange: detect when the value in the variable change and call to the method
+-->
 <ion-content>
-    <ion-searchbar showCancelButton="focus"></ion-searchbar>
+    <ion-searchbar debounce="100" [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)">
+    </ion-searchbar>
     <ion-list>
-        <ion-item *ngFor="let quote of quotes | async">
-        <!--<ion-item button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">-->
+        <!--<ion-item button detail lines="inset" *ngFor="let quote of (quotes | async)" [routerLink]="['/', 'quotes', 'quote.quote_id']">-->
+        <ion-item button detail lines="inset" *ngFor="let quote of (quotes | async)" (click)="openDetails(quote)">
         {{ quote.quote }}
         </ion-item>
     </ion-list>
 </ion-content>
-
-<script>
-    const searchbar = document.querySelector('ion-searchbar');
-    const items = Array.from(document.querySelector('ion-list').children);
-
-    searchbar.addEventListener('ionInput', handleInput);
-
-    function handleInput(event) {
-      const query = event.target.value.toLowerCase();
-      requestAnimationFrame(() => {
-        items.forEach(item => {
-          const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
-          item.style.display = shouldShow ? 'block' : 'none';
-        });
-      });
-    }
-  </script>
