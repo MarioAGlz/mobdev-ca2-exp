@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title> Quotes </ion-title>
+  <ion-toolbar color="bbad">
+    <ion-title class="ion-text-center"> Quotes </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,12 +11,13 @@
     ionChange: detect when the value in the variable change and call to the method
 -->
 <ion-content>
-    <ion-searchbar debounce="100" [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)">
+    <ion-searchbar debounce="100" [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" placeholder="Search by author">
     </ion-searchbar>
     <ion-list>
         <!--<ion-item button detail lines="inset" *ngFor="let quote of (quotes | async)" [routerLink]="['/', 'quotes', 'quote.quote_id']">-->
         <ion-item button detail lines="inset" *ngFor="let quote of (quotes | async)" (click)="openDetails(quote)">
-        {{ quote.quote }}
+            <ion-icon name="receipt-outline" slot="start" color="micon"></ion-icon>
+            <ion-label>{{ quote.quote }}</ion-label>  
         </ion-item>
     </ion-list>
 </ion-content>

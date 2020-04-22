@@ -1,13 +1,18 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Episodes</ion-title>
+  <ion-toolbar color="bbad">
+    <ion-title class="ion-text-center">Episodes</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- 
+    code reference:
+    https://www.freecodecamp.org/news/how-to-build-your-first-ionic-4-app-with-api-calls-f6ea747dc17a/
+-->
 <ion-content>
     <ion-list>
         <ion-item button detail lines="inset" *ngFor="let episode of episodes | async" (click)="openDetails(episode)">
-        {{ episode.title }}
+            <ion-icon slot="start" name="film-outline" color="micon"></ion-icon>
+            {{ episode.title }}
         </ion-item>
     </ion-list>
 </ion-content>
