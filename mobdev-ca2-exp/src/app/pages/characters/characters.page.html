@@ -9,9 +9,8 @@
     https://www.freecodecamp.org/news/how-to-build-your-first-ionic-4-app-with-api-calls-f6ea747dc17a/
 -->
 <ion-content>
-	<ion-list>
-		<ion-item button detail lines="inset" *ngFor="let character of characters | async"
-			(click)="openDetails(character)">
+	<ion-list *ngFor="let charts of characters">
+		<ion-item button detail lines="inset" *ngFor="let character of charts" (click)="openDetails(character)">
 			<ion-avatar slot="start">
 				<img [src]="character.img" *ngIf="character.img != 'N/A'">
             </ion-avatar>
@@ -20,4 +19,14 @@
 				</ion-label>
 		</ion-item>
 	</ion-list>
+
+<!-- 
+    code reference:
+    https://devdactic.com/ionic-4-pokedex-search-scroll/
+-->
+	<ion-infinite-scroll threshold="25%" position="bottom" (ionInfinite)="loadCharts(true, $event)">
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more characters...">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+    
 </ion-content>

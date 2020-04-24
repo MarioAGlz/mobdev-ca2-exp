@@ -17,7 +17,8 @@
     <ion-list>
         <ion-item *ngFor="let death of (deaths | async)">
             <ion-icon slot="start" name="skull" color="danger"></ion-icon> 
-            Total deaths:  {{ death.deathCount }}
+            Total deaths:  {{ death.deathCount }} <br>
+            {{ death.name }}
         </ion-item>
     </ion-list>
 

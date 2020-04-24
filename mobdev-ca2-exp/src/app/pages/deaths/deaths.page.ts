@@ -15,6 +15,7 @@ export class DeathsPage implements OnInit {
     constructor(private api: ApiService) { }
 
     ngOnInit() {
+        this.deaths = this.api.getDeaths(this.searchName);
     }
 
     /**
@@ -23,7 +24,7 @@ export class DeathsPage implements OnInit {
      */
     searchChanged() {
     // Call our service function which returns an Observable
-    this.deaths = this.api.getDeaths(this.searchName);
+        this.deaths = this.api.getDeaths(this.searchName);
     }
 
 }

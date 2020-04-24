@@ -11,13 +11,15 @@
     ionChange: detect when the value in the variable change and call to the method
 -->
 <ion-content>
-    <ion-searchbar debounce="100" [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" placeholder="Search by author">
+
+    <ion-searchbar debounce="200" [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" placeholder="Search by author">
     </ion-searchbar>
+    
     <ion-list>
-        <!--<ion-item button detail lines="inset" *ngFor="let quote of (quotes | async)" [routerLink]="['/', 'quotes', 'quote.quote_id']">-->
         <ion-item button detail lines="inset" *ngFor="let quote of (quotes | async)" (click)="openDetails(quote)">
             <ion-icon name="receipt-outline" slot="start" color="micon"></ion-icon>
             <ion-label>{{ quote.quote }}</ion-label>  
         </ion-item>
     </ion-list>
+
 </ion-content>

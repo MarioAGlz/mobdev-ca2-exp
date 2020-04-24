@@ -16,7 +16,7 @@ export class QuotesPage implements OnInit {
     constructor(private router: Router, private api: ApiService) { }
 
     ngOnInit() {
-        //this.quotes = this.api.getQuotes();
+        this.quotes = this.api.getAllQuotes();
     }
 
     /**
@@ -25,7 +25,7 @@ export class QuotesPage implements OnInit {
      */
     searchChanged() {
     // Call our service function which returns an Observable
-    this.quotes = this.api.getQuotes(this.searchTerm);
+        this.quotes = this.api.getQuotes(this.searchTerm);
     }
     
     openDetails(quote) {
